@@ -10,7 +10,7 @@ function App() {
     return (
         <div id="interface">
             <div> Testing 123 </div>
-            <ImageGallery folderPath="dist/images" />
+            <ImageGallery folderPath="images" />
         </div>
     );
 }
