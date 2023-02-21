@@ -1,18 +1,18 @@
-from flask import Flask
-import jsonify
+from flask import Flask, jsonify
 import os
 
 app = Flask(__name__)
 
-# pass in folder name and return list of image paths
+# need to get all files within dist/[folder name]
 
 
 @app.route('/images/<folder_name>')
 def images(folder_name):
-    folder_path = f'dist/{folder_name}'
+    full_path = os.path.join(os.path.dirname(__file__), 'dist', folder_name)
     images = []
-    for file_name in os.listdir(folder_path):
+    for file_name in os.listdir(full_path):
         if file_name.endswith(('.png', '.jpg', '.jpeg')):
+            print("here")
             url = f'/images/{folder_name}/{file_name}'
             images.append(url)
     return jsonify(images)
